@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import CardList from './CardList';
 import SearchBox from "./SearchBox";
-import {robots} from './robots'
-
+import {robots} from './robots';
+import './App.css';
 
 function App(){
 
@@ -17,7 +17,7 @@ function App(){
 
   return (
       <div className='tc'>
-        <h1>RoboFriends</h1>
+        <h1 className='f1'>RoboFriends</h1>
         <SearchBox searchChange={handleChange} />
         <CardList  robots={robot} />
       </div>
