@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import CardList from './CardList';
 import SearchBox from "./SearchBox";
 import {robots} from './robots'
@@ -6,11 +6,20 @@ import {robots} from './robots'
 
 function App(){
 
-    return (
+  const [robot, setRobot] = useState(robots);
+
+  function handleChange(event) {
+      const filteredRobots = robots.filter(rob => {
+        return rob.name.toLowerCase().includes(event.target.value.toLowerCase())
+      })
+      setRobot(filteredRobots);
+    }
+
+  return (
       <div className='tc'>
         <h1>RoboFriends</h1>
-        <SearchBox />
-        <CardList  />
+        <SearchBox searchChange={handleChange} />
+        <CardList  robots={robot} />
       </div>
     );
   }
